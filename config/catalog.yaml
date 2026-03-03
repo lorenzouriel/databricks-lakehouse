@@ -1,0 +1,58 @@
+# config/catalog.yaml
+# Central registry of assets to monitor.
+# Add a ticker here → it gets processed through all pipeline layers on the next run.
+# Remove or set active: false to stop monitoring an asset.
+
+assets:
+  stocks:
+    - id: "AAPL"
+      display_name: "Apple Inc."
+      active: true
+      news_keywords: ["Apple", "AAPL", "Tim Cook"]
+
+    - id: "MSFT"
+      display_name: "Microsoft Corporation"
+      active: true
+      news_keywords: ["Microsoft", "MSFT", "Satya Nadella", "Azure"]
+
+    - id: "NVDA"
+      display_name: "NVIDIA Corporation"
+      active: true
+      news_keywords: ["NVIDIA", "NVDA", "Jensen Huang", "GPU"]
+
+    - id: "GOOGL"
+      display_name: "Alphabet Inc."
+      active: true
+      news_keywords: ["Google", "Alphabet", "GOOGL", "Gemini AI"]
+
+  crypto:
+    - id: "BTC-USD"
+      display_name: "Bitcoin"
+      active: true
+      news_keywords: ["Bitcoin", "BTC", "Satoshi", "crypto"]
+
+    - id: "ETH-USD"
+      display_name: "Ethereum"
+      active: true
+      news_keywords: ["Ethereum", "ETH", "Vitalik", "DeFi"]
+
+    - id: "SOL-USD"
+      display_name: "Solana"
+      active: true
+      news_keywords: ["Solana", "SOL"]
+
+  fx:
+    - id: "EURUSD=X"
+      display_name: "EUR/USD"
+      active: true
+      news_keywords: ["EUR/USD", "Euro", "ECB", "European Central Bank"]
+
+    - id: "GBPUSD=X"
+      display_name: "GBP/USD"
+      active: true
+      news_keywords: ["GBP/USD", "Sterling", "Bank of England", "British pound"]
+
+    - id: "JPYUSD=X"
+      display_name: "JPY/USD"
+      active: true
+      news_keywords: ["JPY", "Yen", "Bank of Japan", "BOJ"]

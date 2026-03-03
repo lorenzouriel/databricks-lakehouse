@@ -1,0 +1,30 @@
+# config/settings.yaml
+# Non-secret pipeline configuration. Safe to commit to Git.
+# API keys and credentials are stored in Databricks Secrets — never here.
+
+pipeline:
+  database_name: "financial_lakehouse"
+  lookback_days_initial: 90       # Days of history to fetch on first run (new asset)
+  lookback_days_incremental: 3    # Days to re-fetch on subsequent runs (overlap for safety)
+  run_date: null                  # null = today; set to "YYYY-MM-DD" for backfill
+
+news:
+  # NewsAPI key is stored in Databricks Secrets — never in this file.
+  # Setup: databricks secrets create-scope --scope financial-lakehouse
+  #        databricks secrets put --scope financial-lakehouse --key newsapi-key
+  secret_scope: "financial-lakehouse"
+  secret_key: "newsapi-key"
+  max_articles_per_keyword: 20
+  language: "en"
+  sort_by: "publishedAt"          # publishedAt | relevancy | popularity
+
+gold:
+  trend_thresholds:
+    up_pct: 0.5                   # pct_change_7d > 0.5 → trend_direction = UP
+    down_pct: -0.5                # pct_change_7d < -0.5 → trend_direction = DOWN
+                                  # else → FLAT
+  news_sample_size: 3             # Number of sample headlines to store in gold_news_summary
+  top_sources_count: 3            # Number of top news sources to store
+
+logging:
+  level: "INFO"                   # DEBUG | INFO | WARNING | ERROR
